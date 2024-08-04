@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Srinivas Institute of Technology Mangalore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="Images/sit logo.jpeg" alt="College Logo" id="logo">
+            <h1>Srinivas Institute of Technology Mangalore</h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2>Admission Form</h2>
+        <form id="admission-form">
+            <label for="name">Name of the Applicant:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+            
+            <label for="course-type">Course Type:</label>
+            <select id="course-type" name="course-type" required>
+                <option value="">Select Course Type</option>
+                <option value="ug">Undergraduate (UG)</option>
+                <option value="pg">Postgraduate (PG)</option>
+            </select>
+            
+            <label for="branch">Select Branch:</label>
+            <select id="branch" name="branch" required>
+                <option value="">Select Branch</option>
+            </select>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 SIT Mangalore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const courseType = document.getElementById('course-type');
+        const branch = document.getElementById('branch');
+
+        const branches = {
+            ug: ['Computer Science & Engineering',
+            'Electronics & Communication Engineering',
+            'Mechanical Engineering',
+            'Electrical & Electronics Engineering',
+            'Artificial Intelligence and Machine Learning'],
+            pg: [  'MBA',
+            'Master of Computer Applications']
+        };
+
+        courseType.addEventListener('change', function() {
+            const selectedCourseType = this.value;
+            branch.innerHTML = '<option value="">Select Branch</option>'; // Reset branches
+
+            if (branches[selectedCourseType]) {
+                branches[selectedCourseType].forEach(function(b) {
+                    const option = document.createElement('option');
+                    option.value = b.toLowerCase().replace(/ /g, '_');
+                    option.textContent = b;
+                    branch.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
